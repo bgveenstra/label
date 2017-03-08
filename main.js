@@ -1,6 +1,7 @@
+
+
 var request = require('request');
 
-'use strict;'
 
 var github = {
   baseUrl: 'https://api.github.com',
@@ -13,7 +14,6 @@ var github = {
 var ORG = 'sf-wdi-labs';
 var userAgent = 'sample user agent string';
 
-// function getRepos(orgName=ORG){  does not work in ES6
 function getRepos(orgName){
   var options = {
     url: github.baseUrl + github.orgRepos(orgName),
@@ -33,7 +33,7 @@ function getRepos(orgName){
   });
 }
 
-// function addLabel(labelName, labelColor, repo, owner=ORG){
+
 function addLabel(labelName, labelColor, repo, owner){
   var options = {
     url: github.baseUrl + github.paths.repoLabels(owner, repo),
@@ -42,6 +42,7 @@ function addLabel(labelName, labelColor, repo, owner){
     },
     form: { name: labelName, color: labelColor }
   }
+  # integration authentication, or
   request.post(options, (err, response, body) => {
     if (err){
       console.error(err);
@@ -56,22 +57,3 @@ function addLabel(labelName, labelColor, repo, owner){
 }
 
 addLabel('ES6', '#c0ffee', 'js-functions', 'SF-WDI-LABS');
-
-  // var request = require('request');
-  //
-  // var options = {
-  //   url: 'https://api.github.com/repos/request/request',
-  //   headers: {
-  //     'User-Agent': 'request'
-  //   }
-  // };
-  //
-  // function callback(error, response, body) {
-  //   if (!error && response.statusCode == 200) {
-  //     var info = JSON.parse(body);
-  //     console.log(info.stargazers_count + " Stars");
-  //     console.log(info.forks_count + " Forks");
-  //   }
-  // }
-  //
-  // request(options, callback);
