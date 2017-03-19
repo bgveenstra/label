@@ -1,4 +1,4 @@
-add labels to all of an organization's repos
+add labels to all of an organization's repos based on tags
 
 requires integration / authentication
 
